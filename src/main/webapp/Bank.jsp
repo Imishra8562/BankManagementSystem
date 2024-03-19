@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,25 +7,114 @@
 <title>Bank_jsp</title>
 </head>
 <body>
-	<%@ page import="java.sql.*"%>
-	<%@ page import="javax.swing.*"%>
-	<%
-	String btnval = request.getParameter("b1");
-	if (btnval.equalsIgnoreCase("Save")) {
-		String t1 = request.getParameter("t1");
-		String t2 = request.getParameter("t2");
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_automation_system","root","mishra");
-			PreparedStatement ps = con.prepareStatement("insert into bank values(?,?)");
-			ps.setString(1, t1);
-			ps.setString(2, t2);
-			ps.executeUpdate();
-			out.println("<script>alert('Record Saved......')</script>");
-		} catch (Exception e) {
-			out.println(e.toString());
-		}
-	} //End of save
-	%>
+    <%@ page import="java.sql.*"%>
+    <%@ page import="javax.swing.*"%>
+    <%
+    String btnval = request.getParameter("b1");
+    if (btnval != null) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_automation_system", "root", "mishra");
+            PreparedStatement ps;
+            
+            if (btnval.equalsIgnoreCase("Save")) {
+                String t1 = request.getParameter("t1");
+                String t2 = request.getParameter("t2");
+                
+                ps = con.prepareStatement("insert into bank values(?,?)");
+                ps.setString(1, t1);
+                ps.setString(2, t2);
+         
+                ps.executeUpdate();
+                out.println("<script>alert('Record Saved......')</script>");
+            } else if (btnval.equalsIgnoreCase("delete")) {
+                String st1 = request.getParameter("t1");
+                ps = con.prepareStatement("delete from Bank where Bank_id=?");
+                ps.setString(1, st1);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
+                    out.println("<script>alert('Record Deleted......')</script>");
+                } else {
+                    out.println("<script>alert('Bank_id is not present.')</script>");
+                }
+            } else if (btnval.equalsIgnoreCase("update")) {
+                String t1 = request.getParameter("t1");
+                String t2 = request.getParameter("t2");
+                
+                ps = con.prepareStatement("update Bank set  Bank_Detail=?where Bank_id=?");
+                ps.setString(1, t2);
+                ps.setString(2, t1);
+                
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
+                    out.println("<script>alert('Record Updated......')</script>");
+                } else {
+                    out.println("<script>alert('Bank_id is not present.')</script>");
+                }
+            }else if (btnval.equalsIgnoreCase("Psearch")) {
+                String st1 = request.getParameter("t1");
+                ps = con.prepareStatement("select * from Bank where Bank_id=?");
+                ps.setString(1, st1);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    out.println("<script>alert('Record Found: Bank_Detail=" + rs.getString("Bank_Detail") + "')</script>");
+                } else {
+                    out.println("<script>alert('User not found.')</script>");
+                }
+            }  else if(btnval.equalsIgnoreCase("Allsearch")) {
+                ps = con.prepareStatement("SELECT * FROM bank");
+                ResultSet rs = ps.executeQuery();
+            %>
+                <table border="2">
+                    <tr>
+                        <th>Bank ID</th>
+                        <th>Bank Details</th>
+                    </tr>
+            <%
+                while (rs.next()) {
+            %>
+                    <tr>
+                        <td><%=rs.getString(1)%></td>
+                        <td><%=rs.getString(2)%></td>
+                    </tr>
+            <%
+                }
+            %>
+                </table>
+            <% //find code
+            }else if (btnval.equalsIgnoreCase("find")) {
+          	  String t1 = request.getParameter("t1");
+        	  String colnm = request.getParameter("s1");
+        	   ps = con.prepareStatement("select * from bank where" + " " + colnm + "=" + "'" + t1 + "'");
+               ResultSet rs = ps.executeQuery();  
+        	  %>
+        	  <table border=2>
+        		<tr>
+        			<th>Bank ID</th>
+        			<th>Bank Details</th>
+        		</tr>
+        		<%
+        		while (rs.next()) {
+        		%>
+        		<tr>
+        			<th><%=rs.getString(1)%></th>
+        			<th><%=rs.getString(2)%></th>
+        		</tr>
+        		<%
+        		}
+        		%>
+        		</table>
+        		<input type=button value="Print" onclick="window.print()">
+        	<%
+        	} 
+
+            con.close(); // Close the connection
+        } catch (SQLException | ClassNotFoundException e) {
+            out.println(e.toString());
+        } 
+    }
+   
+      %>
 </body>
 </html>
+

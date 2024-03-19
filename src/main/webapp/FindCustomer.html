@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FindCustomer</title>
+</head>
+<body>
+	<div align="center">
+		<form action="Customer.jsp" method="post" name="cu">
+			<table>
+				<tr>
+					<td><select name="s1">
+							<option value="Customer_Id">Customer_Id</option>
+							<option value="Address_Id">Address_Id</option>
+							<option value="Branch_Id">Branch_Id</option>
+							<option value="Gender">Gender</option>
+							<option value="Contact">Contact</option>
+					</select>
+					</td>
+					<td><input type="Text" name="t1"></td>
+					<td><input type="Submit" name="b1" value="Find"></td>
+					<th>
+					     <input type="button" value="Home" onclick="Home()">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+	function Home()
+	{
+		window.open("Menu.html","_self")
+	}
+</script>

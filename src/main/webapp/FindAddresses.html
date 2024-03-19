@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FindAddresses</title>
+</head>
+<body>
+	<div align="center">
+		<form action="Addresses.jsp" method="post" name="ad">
+			<table>
+				<tr>
+					<td><select name="s1">
+							<option value="Address_Id">Address_Id</option>
+							<option value="Line1">Line1</option>
+							<option value="Line2">Line2</option>
+							<option value="Town_City">Town_City</option>
+							<option value="Zip_code">Zip_code</option>
+							<option value="Country">Country</option>
+							<option value="Other_Details">Other_Details</option>
+					</select></td>
+					<td><input type="Text" name="t1"></td>
+					<td><input type="Submit" name="b1" value="Find"></td>
+					<th>
+					     <input type="button" value="Home" onclick="Home()">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+	function Home()
+	{
+		window.open("Menu.html","_self")
+	}
+</script>

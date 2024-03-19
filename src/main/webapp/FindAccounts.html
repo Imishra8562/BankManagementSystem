@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FindAccounts</title>
+</head>
+<body>
+	<div align="center">
+		<form action="Accounts.jsp" method="post" name="ac">
+			<table>
+				<tr>
+					<td><select name="s1">
+							<option value="Account_Number">Account_Number</option>
+							<option value="Customer_Id">Customer_Id</option>
+							<option value="Account_status_code">Account_status_code</option>
+							<option value="Account_type_code">Account_type_code</option>
+					</select></td>
+					<td><input type="Text" name="t1"></td>
+					<td><input type="Submit" name="b1" value="Find"></td>
+					<th>
+					     <input type="button" value="Home" onclick="Home()">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+	function Home()
+	{
+		window.open("Menu.html","_self")
+	}
+</script>

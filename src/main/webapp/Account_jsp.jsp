@@ -46,9 +46,9 @@
                 String t3 = request.getParameter("t3");
                 String t4 = request.getParameter("t4");
                 
-                ps = con.prepareStatement("update Accounts set customer_id=?, account_status_code=?, account_type_code=? where Account_number=?");
-                ps.setString(1, t2);
-                ps.setString(2, t3);
+                ps = con.prepareStatement("update Accounts set  account_status_code=?,customer_id=?, account_type_code=? where Account_number=?");
+                ps.setString(1, t3);
+                ps.setString(2, t2);
                 ps.setString(3, t4);
                 ps.setString(4, t1);
                 
@@ -58,7 +58,7 @@
                 } else {
                     out.println("<script>alert('User is not present.')</script>");
                 }
-            } else if (btnval.equalsIgnoreCase("Psearch")) {
+            } else if (btnval.equalsIgnoreCase("search")) {
                 String st1 = request.getParameter("t1");
                 ps = con.prepareStatement("select * from Accounts where Account_number=?");
                 ps.setString(1, st1);
@@ -68,31 +68,13 @@
                 } else {
                     out.println("<script>alert('User not found.')</script>");
                 }
-            } else if(btnval.equalsIgnoreCase("Allsearch")) {
-                ps = con.prepareStatement("SELECT * FROM Accounts");
+            } else if (btnval.equalsIgnoreCase("allsearch")) {
+                ps = con.prepareStatement("select * from Accounts");
                 ResultSet rs = ps.executeQuery();
-            %>
-                <table border="2">
-                    <tr>
-                        <th>Account number</th>
-                        <th>Customer id</th>
-                        <th>Account Status Code</th>
-                        <th>Account Type Code</th>
-                    </tr>
-            <%
+                out.println("<script>alert('All records:')</script>");
                 while (rs.next()) {
-            %>
-                    <tr>
-                        <td><%=rs.getString(1)%></td>
-                        <td><%=rs.getString(2)%></td>
-                        <td><%=rs.getString(3)%></td>
-                        <td><%=rs.getString(4)%></td>
-                     </tr>
-            <%
+                    out.println("<script>alert('Customer ID=" + rs.getString("customer_id") + ", Account Status Code=" + rs.getString("account_status_code") + ", Account Type Code=" + rs.getString("account_type_code") + "')</script>");
                 }
-            %>
-                </table>
-            <%
             }
             
             con.close(); // Close the connection

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FindTransactions</title>
+</head>
+<body>
+	<div align="center">
+		<form action="Transaction.jsp" method="post" name="tran">
+			<table>
+				<tr>
+					<td><select name="s1">
+							<option value="Transaction_Id">Transaction_Id</option>
+							<option value="Account_Number">Account_Number</option>
+							<option value="Trans_type_code">Trans_type_code</option>
+							<option value="Dt_time">Dt_time</option>
+							<option value="Tansaction_amount">Tansaction_amount</option>
+					</select></td>
+					<td><input type="Text" name="t1"></td>
+					<td><input type="Submit" name="b1" value="Find"></td>
+					<th>
+					     <input type="button" value="Home" onclick="Home()">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+	function Home()
+	{
+		window.open("Menu.html","_self")
+	}
+</script>

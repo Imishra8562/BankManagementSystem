@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body> 
+	<div align="center">
+		<form name="fi" method="post" action="Bank.jsp">
+			<table>
+				<tr>
+					<td>
+					    <select name=s1>
+						     <option value="bank_id">Bank ID</option>
+						     <option value="bank_detail">Bank Detail</option>
+						     <option value="Alldetail">AllDetail</option>
+					    </select>
+					      <input type="text" name="t1">
+					      <input type="submit" value="Find" name=b1>
+					</td>
+					<th>
+					     <input type="button" value="Home" onclick="Home()">
+					</th>
+				</tr>
+  		</table>
+		</form>
+	</div>
+</body>
+</html>
+<script>
+	function Home()
+	{
+		window.open("Menu.html","_self")
+	}
+</script>

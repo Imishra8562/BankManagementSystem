@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Create User</legend>
+        <form action="Login.jsp" method="post" onsubmit="return validate()">
+            <table border="1">
+                <tr>
+                    <th>User name :</th>
+                    <th><input type="text" required name="t1" id="username"></th>
+                </tr>
+                <tr>
+                    <th>User Password :</th>
+                    <th><input type="password" name="t2" id="password" required></th>
+                </tr>
+            </table>
+            <input type="submit" value="Create User" name="b1">
+            <input type="reset" value="reset" >
+        </form>
+        <div>
+            <p>Already have an account? <a href="Login.jsp">Login here</a>.</p>
+        </div>
+    </fieldset>
+    <script>
+function validate() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    //Username validation
+    var usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+    if (!usernameRegex.test(username)) {
+        alert("Username must contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+        return false;
+    }
+
+     //Password validation
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>

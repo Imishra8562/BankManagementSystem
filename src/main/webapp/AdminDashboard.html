@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Logout Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<style>
+/* Style the navigation bar */
+nav {
+	background-color: blue; 
+	padding: 10px; 
+}
+
+ul {
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+}
+
+li {
+	display: inline; 
+	margin-right: 20px; 
+}
+
+li a {
+	color: white;
+	text-decoration: none;
+}
+
+li a:hover {
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="CloseAccount.html">Close Account</a></li>
+			<li><a href="ViewAccounts.jsp">View Accounts</a></li>
+			
+			<li><a href="DeleteAccount.html">Delete Account</a></li>
+			<li><a href="Deposit.html">Deposit</a></li>
+            <li><a href="Withdraw.html">Withdraw</a></li>
+            <li><a href="Transfer.html">Transfer</a></li>
+            <li><a href="TransactionTracker.jsp">Transfer</a></li>
+			<li><form method="post" action="logout.jsp">
+					<input type="submit" value="Logout">
+				</form></li>
+		</ul>
+	</nav>
+	<div class="container">
+    <h2>Customer Management</h2>
+    <a href="UpdateCustomer.html" class="button">Update Customer</a>
+    <a href="DeleteCustomer.html" class="button">Delete Customer</a>
+    
+    <h3>Customer Search</h3>
+    <form action="Customer.jsp" method="post">
+        <input type="text" name="t1" placeholder="Enter Customer ID">
+        <input type="submit" value="Search" name="b1">
+        <h3>Customer Search</h3>
+        <input type="submit" value="AllSearch" name="b1">
+    </form>
+</div>
+</body>
+</html>

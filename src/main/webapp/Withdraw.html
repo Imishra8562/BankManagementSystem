@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds</title>
+</head>
+<body>
+    <h2>Withdraw Funds</h2>
+    <form action="Withdraw.jsp" method="post">
+        <label for="Account number">Enter Account number:</label><br>
+        <input type="number" id="Account number" name="t1" required><br><br>
+       
+        <label for="amount">Enter Amount to Withdraw:</label><br>
+        <input type="number" id="amount" name="t2" min="0" required><br><br>
+        
+        <label for="timestamp">Date-Time:</label>
+        <input type="text" id="timestamp" name="t3" readonly><br><br>
+            
+        <input type="submit" value="Withdraw" name="b1">
+    </form>
+    <script>
+        // Get current date and time
+        var now = new Date();
+        // Format the date and time
+        var formattedDateTime = now.toISOString().slice(0, 19).replace('T', ' ');
+        // Set the value of the timestamp input field
+        document.getElementById("timestamp").value = formattedDateTime;
+    </script>
+</body>
+</html>

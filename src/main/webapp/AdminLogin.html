@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Management System</title>
+<!-- Bootstrap CSS Link -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+.navbar {
+	background-color: #007bff;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+	color: #fff;
+}
+
+/* Hero section */
+.hero-section {
+	background-color: #f8f9fa;
+	padding: 100px 0;
+	text-align: center;
+}
+
+/* Login and registration section */
+.login-section {
+	padding: 50px 0;
+	text-align: center;
+}
+
+.registration-section {
+	padding: 50px 0;
+	text-align: center;
+}
+
+/* Footer */
+footer {
+	background-color: #343a40;
+	color: #fff;
+	padding: 20px 0;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">Bank Management System</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<fieldset>
+			<legend>
+				<h1 style="color: blue">Admin Login</h1>
+			</legend>
+			<form action="Adminlogin.jsp" method="post">
+				<label>Admin Id:</label>
+				 <input type="text" placeholder="Admin id" name="t1" required><br> <br> 
+				 <label>Password:</label>
+				  <input type="password" placeholder="Password" name="t2" required><br><br>
+				   <input style="color: red" type="submit" value="Login" name="b1">
+				    <a href="indexpage.html">Go-Back To Home Page</a>
+			</form>
+			</div>
+		</fieldset>
+	</div>
+</body>
+</html>

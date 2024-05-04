@@ -12,10 +12,8 @@
             String toDate = request.getParameter("toDate");
             
             // Prepare the SQL query to select transactions within the specified date range
-            ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ? AND timestamp BETWEEN ? AND ?");
+            ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ? ");
             ps.setString(1, accountNumber);
-            ps.setString(2, fromDate);
-            ps.setString(3, toDate);
             ResultSet rs = ps.executeQuery();
             
             // Display the table header

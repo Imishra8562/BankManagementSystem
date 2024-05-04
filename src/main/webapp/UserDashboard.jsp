@@ -38,8 +38,8 @@
             <li><a href="Deposit.html">Deposit Funds</a></li>
             <li><a href="Withdraw.html">Withdraw Funds</a></li>
             <li><a href="Transferpage.jsp">Transfer Funds</a></li>
-            <li><a href="UpdateCustomer.html">Update Customer</a></li>
-            <li><a href="Statements.html">Statements</a></li>
+            <li><a href="UpdateCustomer.jsp">Update Customer</a></li>
+            <li><a href="Statementspage.jsp">Statements</a></li>
             <li>
                 <form method="post" action="logout.jsp">
                     <button type="submit">Logout</button>

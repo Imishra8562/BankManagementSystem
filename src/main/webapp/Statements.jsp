@@ -11,11 +11,18 @@
             String fromDate = request.getParameter("fromDate");
             String toDate = request.getParameter("toDate");
             
-            ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ?");
+            // Prepare the SQL query to select transactions within the specified date range
+            ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ? AND timestamp BETWEEN ? AND ?");
             ps.setString(1, accountNumber);
+            ps.setString(2, fromDate);
+            ps.setString(3, toDate);
             ResultSet rs = ps.executeQuery();
+            
+            // Display the table header
             out.println("<table border='1'>");
             out.println("<tr><th>Timestamp</th><th>Transaction Type</th><th>Amount</th></tr>");
+            
+            // Iterate through the result set and display each transaction
             while (rs.next()) {
                 out.println("<tr>");
                 out.println("<td>" + rs.getString("timestamp") + "</td>");
@@ -24,7 +31,10 @@
                 out.println("</tr>");
             }
             
+            // Close the table
             out.println("</table>");
+            
+            // Add a button to allow printing the statement
             %><input type=button value="Print" onclick="window.print()"><%
         }
     } catch (Exception e) {

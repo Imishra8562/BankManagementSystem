@@ -9,6 +9,22 @@
 <%@ page import="java.sql.*"%>
 <%
     String btnval = request.getParameter("b1");
+    String Query = "SELECT " +
+        "C.customer_id, " +
+        "C.username, " +
+        "A.account_id, " +
+        "C.name, " +
+        "C.gender, " +
+        "C.contact, " +
+        "C.address, " +
+        "C.email, " +
+        "C.aadhar_number, " +
+        "C.pancard_number, " +
+        "C.other_details " +
+    "FROM " +
+        "Customers C " +
+    "JOIN " +
+        "Accounts A ON C.customer_id = A.customer_id";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_management_system_db", "root", "mishra");
@@ -57,13 +73,14 @@
                 String t1 = request.getParameter("t1");
                 ps = con.prepareStatement("SELECT * FROM Customers WHERE Customer_id=?");
                 ps.setString(1, t1);
-                ResultSet rs = ps.executeQuery();
+                ResultSet rs = ps.executeQuery(Query);
                 if (rs.next()) {
             %>
                     <table border="1">
                         <tr>
                             <th>Customer Id</th>
                             <th>User name</th>
+                            <th>Account Number</th>
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Contact</th>
@@ -87,6 +104,7 @@
                             <td><%=rs.getString(8)%></td>
                             <td><%=rs.getString(9)%></td>
                             <td><%=rs.getString(10)%></td>
+                            <td><%=rs.getString(11)%></td>
                         </tr>
             <%
                     } while (rs.next());
@@ -97,13 +115,15 @@
                     out.println("<script>alert('User not found.')</script>");
                 }
             } else if(btnval.equalsIgnoreCase("Allsearch")) {
-                ps = con.prepareStatement("SELECT * FROM Customers");
+            	
+                ps = con.prepareStatement(Query);
                 ResultSet rs = ps.executeQuery();
             %>
-                <table border="2">
+                <table border="1">
                     <tr>
                         <th>Customer Id</th>
                         <th>User name</th>
+                        <th>Account Number</th>
                         <th>Name</th>
                         <th>gender</th>
                         <th>Contact</th>
@@ -127,6 +147,7 @@
                         <td><%=rs.getString(8)%></td>
                         <td><%=rs.getString(9)%></td>
                         <td><%=rs.getString(10)%></td>
+                        <td><%=rs.getString(11)%></td>
                     </tr>
             <% 
                 }

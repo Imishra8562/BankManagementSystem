@@ -8,8 +8,9 @@
 <body>
 	<h2>Statements</h2>
 	<form id="statementForm" method="post" action="Statements.jsp">
+	    <% String account_id = (String) session.getAttribute("account_id"); %>
 		<label for="account">Account number:</label>
-		<input type="text" id="account" name="t1" required><br><br>
+		<input type="text" id="account" name="t1" value="<%= account_id %>" required readonly><br><br>
 		
 		<label for="fromDate">From Date:</label> 
 		<input type="date" id="fromDate" name="fromDate" required>

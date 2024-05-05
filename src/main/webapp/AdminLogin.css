@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Set background image */
 body {
 	background-image: url('pic/login.jpg');
@@ -14,7 +15,6 @@ body {
 	/* Adjust the alpha value (0.8) for the desired transparency */
 	padding: 20px;
 }
-
 
 /* Style the person icon */
 .bi-person-circle {

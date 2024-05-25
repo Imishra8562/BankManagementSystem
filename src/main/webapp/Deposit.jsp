@@ -79,3 +79,4 @@
     %>
 </body>
 </html>
+<jsp:include page="UserDashboard.jsp" />

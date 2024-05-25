@@ -13,7 +13,7 @@ response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
     <font color="Red">You are Successfully logged out...</font>
 </h1>
 
-<a href="Login.html">Go Back To Home Page</a>
+<a href="index.html">Go Back To Home Page</a>
 
 </body>
 </html>

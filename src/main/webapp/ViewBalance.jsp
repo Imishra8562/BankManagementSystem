@@ -15,7 +15,7 @@
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_management_system_db", "root", "mishra");
         PreparedStatement ps;
         
-        if (btnval != null && btnval.equalsIgnoreCase("Balance")) {
+        if (btnval.equalsIgnoreCase("Balance")) {
             String account_id = (String) session.getAttribute("account_id");
             
             ps = con.prepareStatement("SELECT balance FROM Accounts WHERE account_id = ?");
@@ -26,7 +26,12 @@
                 double balance = rs.getDouble("balance");
     %>
                 
-               <script>alert('Balence :<%= balance %>')</script>
+               <script>
+    alert('Balance: <%= balance %>');
+    window.location.href = 'UserDashboard.jsp';
+</script>
+               
+               <jsp:include page="UserDashboard.jsp" />
     <%
             } else {
     %>
@@ -38,6 +43,6 @@
         out.println(e.toString());
     }
     %>
-    <jsp:include page="UserDashboard.jsp" />
+    
 </body>
 </html>

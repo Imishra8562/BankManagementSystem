@@ -78,7 +78,7 @@
                 out.println("<script>alert('User already exists!')</script>");
     %>
                 <script>
-                    window.open('NewUser.html', '_self');
+                    window.open('index.html', '_self');
                 </script>
     <%
             } else {

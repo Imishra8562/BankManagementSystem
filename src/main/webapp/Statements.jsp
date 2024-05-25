@@ -13,7 +13,7 @@
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_management_system_db", "root", "mishra");
 
             // Prepare SQL query to select transactions within the specified date range
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ? AND timestamp BETWEEN ? AND ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Transactions WHERE account_id = ? ");
             ps.setString(1, accountNumber);
             ps.setDate(2, java.sql.Date.valueOf(fromDate));
             ps.setDate(3, java.sql.Date.valueOf(toDate));
